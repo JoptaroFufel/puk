@@ -41,7 +41,9 @@ int main()
 	Goods a1(_name);
 	a1.print();
 	cout << "\ninput cost:";
-	cin >> _cost;
+	do {
+		cin >> _cost;
+	} while (_cost < 0);
 	prodavec sas;
 	sas.set_cost(a1, _cost);
 	a1.print();
@@ -50,7 +52,9 @@ int main()
 	Goods a2(_name);
 	a2.print();
 	cout << "\ninput cost:";
-	cin >> _cost;
+	do {
+		cin >> _cost;
+	} while (_cost < 0);
 	sas.set_cost(a2, _cost);
 	a2.print();
 }
