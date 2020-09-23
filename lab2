@@ -8,7 +8,7 @@ class Goods {
 public:
 	friend class prodavec;
 	Goods(string &) ;
-	~Goods() {};
+	~Goods();
 	void print() {
 		cout << "\nName: " << name << "\nID: " << id << "\nCost: " << cost << endl;
 	}
@@ -22,6 +22,10 @@ Goods::Goods(string &_name){
 	cost = 0;
 	name = _name;
 	id = rand() % 100;
+}
+
+Goods::~Goods() {
+	cout << "\n>Destructed<\n";
 }
 
 class prodavec {
@@ -43,7 +47,7 @@ int main()
 	cout << "\ninput cost:";
 	do {
 		rewind(stdin);
-	} while (!scanf_s("%f",_cost)|| _cost < 0 );
+	} while (!scanf_s("%f", &_cost) || _cost < 0);
 	prodavec sas;
 	sas.set_cost(a1, _cost);
 	a1.print();
@@ -54,7 +58,7 @@ int main()
 	cout << "\ninput cost:";
 	do {
 		rewind(stdin);
-	} while (!scanf_s("%f", _cost) || _cost < 0);
+	} while (!scanf_s("%f", &_cost) || _cost < 0);
 	sas.set_cost(a2, _cost);
 	a2.print();
 }
