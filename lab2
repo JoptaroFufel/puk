@@ -5,20 +5,21 @@
 using namespace std;
 
 class Goods {
+	friend void print(Goods);
 public:
 	friend class prodavec;
-	Goods(string &) ;
+	Goods(string&);
+	Goods() { cout << "\ntrytocreate\n"; }
 	~Goods();
-	void print() {
-		cout << "\nName: " << name << "\nID: " << id << "\nCost: " << cost << endl;
-	}
 private:
 	int id;
 	string name;
 	float cost;
 };
 
-Goods::Goods(string &_name){
+void print(Goods);
+
+Goods::Goods(string& _name) {
 	cost = 0;
 	name = _name;
 	id = rand() % 100;
@@ -30,7 +31,7 @@ Goods::~Goods() {
 
 class prodavec {
 public:
-	void set_cost(Goods &a, float _cost) {
+	void set_cost(Goods& a, float _cost) {
 		a.cost = _cost;
 	}
 };
@@ -40,25 +41,30 @@ int main()
 	srand(time_t(NULL));
 	string _name;
 	float _cost;
+	Goods();
 	cout << "\ninput name:";
 	cin >> _name;
 	Goods a1(_name);
-	a1.print();
+	print(a1);
 	cout << "\ninput cost:";
 	do {
 		rewind(stdin);
 	} while (!scanf_s("%f", &_cost) || _cost < 0);
 	prodavec sas;
 	sas.set_cost(a1, _cost);
-	a1.print();
+	print(a1);
 	cout << "\ninput name:";
 	cin >> _name;
 	Goods a2(_name);
-	a2.print();
+	print(a2);
 	cout << "\ninput cost:";
 	do {
 		rewind(stdin);
 	} while (!scanf_s("%f", &_cost) || _cost < 0);
 	sas.set_cost(a2, _cost);
-	a2.print();
+	print(a2);
+}
+
+void print(Goods _goods) {
+	cout << "\nName: " << _goods.name << "\nID: " << _goods.id << "\nCost: " << _goods.cost << endl;
 }
