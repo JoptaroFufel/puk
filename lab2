@@ -38,31 +38,30 @@ public:
 
 int main()
 {
-	srand(time_t(NULL));
+	const int size = 3;
+	int k;
+	string h;
 	string _name;
 	float _cost;
+
+	srand(time_t(NULL));
 	Goods();
-	cout << "\ninput name:";
-	cin >> _name;
-	Goods a1(_name);
-	print(a1);
-	cout << "\ninput cost:";
-	do {
-		rewind(stdin);
-	} while (!scanf_s("%f", &_cost) || _cost < 0);
+	Goods mas[size];
 	prodavec sas;
-	sas.set_cost(a1, _cost);
-	print(a1);
-	cout << "\ninput name:";
-	cin >> _name;
-	Goods a2(_name);
-	print(a2);
-	cout << "\ninput cost:";
-	do {
-		rewind(stdin);
-	} while (!scanf_s("%f", &_cost) || _cost < 0);
-	sas.set_cost(a2, _cost);
-	print(a2);
+	
+	for (int i = 0; i < size; i++)
+	{
+		cout << "\ninput name:";
+		cin >> _name;
+		mas[i] = Goods(_name);
+		print(mas[i]);
+		cout << "\ninput cost:";
+		do {
+			rewind(stdin);
+		} while (!scanf_s("%f", &_cost) || _cost < 0);
+		sas.set_cost(mas[i], _cost);
+		print(mas[i]);
+	}
 }
 
 void print(Goods _goods) {
