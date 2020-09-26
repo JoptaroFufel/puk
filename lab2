@@ -59,6 +59,7 @@ int main()
 		do {
 			rewind(stdin);
 		} while (!scanf_s("%f", &_cost) || _cost < 0);
+		rewind(stdin);
 		sas.set_cost(mas[i], _cost);
 		print(mas[i]);
 	}
